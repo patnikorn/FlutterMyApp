@@ -1,10 +1,14 @@
-// Copyright 2018 The Flutter team. All rights reserved.
-// Use of this source code is governed by a BSD-style license that can be
-// found in the LICENSE file.
-
 import 'package:flutter/material.dart';
+// Uncomment lines 7 and 10 to view the visual layout at runtime.
+// import 'package:flutter/rendering.dart' show debugPaintSizeEnabled;
+import 'favoriteA.dart';
+import 'favoriteB.dart';
+import 'favoriteC.dart';
 
-void main() => runApp(MyApp());
+void main() {
+  // debugPaintSizeEnabled = true;
+  runApp(MyApp());
+}
 
 class MyApp extends StatelessWidget {
   @override
@@ -38,14 +42,13 @@ class MyApp extends StatelessWidget {
             ),
           ),
           /*3*/
-          Icon(
-            Icons.star,
-            color: Colors.red[500],
-          ),
-          Text('41'),
+          FavoriteA(),
+          ParentManageB(),
+          ParentManageC()
         ],
       ),
     );
+
     Color color = Theme.of(context).primaryColor;
 
     Widget buttonSection = Container(
@@ -58,6 +61,7 @@ class MyApp extends StatelessWidget {
         ],
       ),
     );
+
     Widget textSection = Container(
       padding: const EdgeInsets.all(32),
       child: Text(
@@ -70,13 +74,14 @@ class MyApp extends StatelessWidget {
         softWrap: true,
       ),
     );
+
     return MaterialApp(
       title: 'Flutter layout demo',
       home: Scaffold(
         appBar: AppBar(
           title: Text('Flutter layout demo'),
         ),
-        body: Column(
+        body: ListView(
           children: [
             Image.asset(
               'images/lake.jpg',
